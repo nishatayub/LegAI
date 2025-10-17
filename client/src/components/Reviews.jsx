@@ -67,10 +67,10 @@ const Reviews = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#101820] mb-4">
-            What Our <span className="text-[#4C9F70]">Users Say</span>
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#5C2E2E] mb-4">
+            What Our Users Say
           </h2>
-          <p className="text-base text-[#6E7F80] leading-relaxed">
+          <p className="text-base text-[#5C2E2E]/80 leading-relaxed">
             Trusted by legal professionals worldwide. Here's what they have to say about LegAI.
           </p>
         </div>
@@ -82,18 +82,18 @@ const Reviews = () => {
               {reviews.map((review, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-4">
                   <div className="max-w-4xl mx-auto">
-                    <div className="bg-gradient-to-br from-[#EAE4DC]/50 to-white rounded-3xl p-8 border border-[#6E7F80]/20 shadow-xl">
+                    <div className="bg-[#F5F3F0] rounded-3xl p-8 border border-[#5C2E2E]/10">
                       {/* Stars */}
                       <div className="flex gap-1 mb-4 justify-center">
                         {[...Array(review.rating)].map((_, i) => (
-                          <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#4C9F70" xmlns="http://www.w3.org/2000/svg">
+                          <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#5C2E2E" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                           </svg>
                         ))}
                       </div>
 
                       {/* Review Text */}
-                      <p className="text-base text-[#101820] leading-relaxed text-center mb-6 italic">
+                      <p className="text-base text-[#5C2E2E] leading-relaxed text-center mb-6 italic">
                         "{review.text}"
                       </p>
 
@@ -102,12 +102,12 @@ const Reviews = () => {
                         <img
                           src={review.avatar}
                           alt={review.name}
-                          className="w-12 h-12 rounded-full border-2 border-[#4C9F70]"
+                          className="w-12 h-12 rounded-full border-2 border-[#5C2E2E]"
                         />
                         <div className="text-left">
-                          <p className="font-bold text-[#101820] text-sm">{review.name}</p>
-                          <p className="text-[#6E7F80] text-xs">{review.role}</p>
-                          <p className="text-[#6E7F80] text-xs">{review.company}</p>
+                          <p className="font-bold text-[#5C2E2E] text-sm">{review.name}</p>
+                          <p className="text-[#5C2E2E]/70 text-xs">{review.role}</p>
+                          <p className="text-[#5C2E2E]/70 text-xs">{review.company}</p>
                         </div>
                       </div>
                     </div>
@@ -120,7 +120,7 @@ const Reviews = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevReview}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-[#6E7F80]/30 rounded-full flex items-center justify-center hover:bg-[#4C9F70] hover:text-white hover:border-[#4C9F70] transition-all duration-200 shadow-lg"
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#5C2E2E] border border-[#5C2E2E] rounded-full flex items-center justify-center hover:bg-[#7A4444] text-white transition-all duration-200 shadow-lg"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -128,7 +128,7 @@ const Reviews = () => {
           </button>
           <button
             onClick={nextReview}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-[#6E7F80]/30 rounded-full flex items-center justify-center hover:bg-[#4C9F70] hover:text-white hover:border-[#4C9F70] transition-all duration-200 shadow-lg"
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#5C2E2E] border border-[#5C2E2E] rounded-full flex items-center justify-center hover:bg-[#7A4444] text-white transition-all duration-200 shadow-lg"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -142,7 +142,7 @@ const Reviews = () => {
                 key={index}
                 onClick={() => setActiveReview(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  index === activeReview ? 'bg-[#4C9F70] w-8' : 'bg-[#6E7F80]/30'
+                  index === activeReview ? 'bg-[#5C2E2E] w-8' : 'bg-[#5C2E2E]/30'
                 }`}
               />
             ))}
@@ -152,23 +152,23 @@ const Reviews = () => {
         {/* Overall Stats */}
         <div className="grid md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#4C9F70] mb-2">4.9</div>
+            <div className="text-3xl font-bold text-[#5C2E2E] mb-2">4.9</div>
             <div className="flex justify-center gap-1 mb-2">
               {[...Array(5)].map((_, i) => (
-                <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#4C9F70" xmlns="http://www.w3.org/2000/svg">
+                <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#5C2E2E" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
               ))}
             </div>
-            <p className="text-[#6E7F80] text-sm">Average Rating</p>
+            <p className="text-[#5C2E2E]/70 text-sm">Average Rating</p>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#4C9F70] mb-2">10K+</div>
-            <p className="text-[#6E7F80] text-sm">Happy Users</p>
+            <div className="text-3xl font-bold text-[#5C2E2E] mb-2">10K+</div>
+            <p className="text-[#5C2E2E]/70 text-sm">Happy Users</p>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#4C9F70] mb-2">98%</div>
-            <p className="text-[#6E7F80] text-sm">Satisfaction Rate</p>
+            <div className="text-3xl font-bold text-[#5C2E2E] mb-2">98%</div>
+            <p className="text-[#5C2E2E]/70 text-sm">Satisfaction Rate</p>
           </div>
         </div>
       </div>

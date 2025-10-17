@@ -68,41 +68,39 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="footer" className="bg-[#101820] text-white pt-16 pb-8">
+    <footer id="footer" className="bg-[#5C2E2E] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-[#4C9F70] rounded-full flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="white" stroke="white" strokeWidth="1.5"/>
-                </svg>
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <span className="text-[#5C2E2E] text-xl font-bold">L</span>
               </div>
               <span className="text-xl font-bold">LegAI</span>
             </div>
-            <p className="text-[#EAE4DC]/80 text-sm leading-relaxed mb-4 max-w-md">
+            <p className="text-white/80 text-sm leading-relaxed mb-4 max-w-md">
               Empowering legal professionals with AI-powered research and insights. 
               Making legal knowledge accessible, accurate, and instant.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-[#EAE4DC]/80 text-sm">
+              <div className="flex items-center gap-2 text-white/80 text-sm">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" strokeWidth="1.5"/>
                   <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="1.5"/>
                 </svg>
                 <span>123 Legal Street, Law City, LC 12345</span>
               </div>
-              <div className="flex items-center gap-2 text-[#EAE4DC]/80 text-sm">
+              <div className="flex items-center gap-2 text-white/80 text-sm">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="1.5"/>
                 </svg>
                 <span>+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-center gap-2 text-[#EAE4DC]/80 text-sm">
+              <div className="flex items-center gap-2 text-white/80 text-sm">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="1.5"/>
                   <path d="M22 6l-10 7L2 6" stroke="currentColor" strokeWidth="1.5"/>

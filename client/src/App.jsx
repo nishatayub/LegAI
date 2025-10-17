@@ -2,6 +2,8 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Landing from './pages/Landing';
 import EchoAI from './pages/EchoAI';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -11,6 +13,14 @@ const router = createBrowserRouter([
   {
     path: '/chat',
     element: <EchoAI/>
+  },
+  {
+    path: '/login',
+    element: <Login/>
+  },
+  {
+    path: '/signup',
+    element: <Signup/>
   },
 ]);
 
