@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { authAPI, authHelpers } from '../utils/api';
-import GoogleLoginButton from '../components/GoogleLoginButton';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -68,9 +67,6 @@ const Signup = () => {
     }
   };
 
-  const handleGoogleError = (error) => {
-    setError(error || 'Google authentication is currently unavailable');
-  };
 
   return (
     <div className="min-h-screen bg-[#F5F3F0] flex items-center justify-center px-4 py-8">
@@ -238,22 +234,6 @@ const Signup = () => {
               {loading ? 'Creating account...' : 'Create account'}
             </button>
 
-            {/* Divider */}
-            <div className="relative my-6">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-[#EAE4DC]"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-[#7D4545]/70">Or sign up with</span>
-              </div>
-            </div>
-
-            {/* Social Signup Buttons */}
-            <div className="w-full">
-              <GoogleLoginButton
-                onError={handleGoogleError}
-              />
-            </div>
           </form>
         </div>
 
