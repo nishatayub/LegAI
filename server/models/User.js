@@ -28,16 +28,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: 'https://via.placeholder.com/150',
     },
-    authProvider: {
-      type: String,
-      enum: ['local', 'google'],
-      default: 'local',
-    },
-    googleId: {
-      type: String,
-      unique: true,
-      sparse: true, // Allow null values and only enforce uniqueness when present
-    },
     isEmailVerified: {
       type: Boolean,
       default: false,
@@ -53,19 +43,15 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// Hash password before saving (only for local auth)
+// Hash password before saving
 userSchema.pre('save', async function (next) {
   // Only hash the password if it has been modified (or is new)
   if (!this.isModified('password')) {
     return next();
   }
 
-  // Only hash if password exists (Google OAuth users won't have passwords)
-  if (this.password) {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-  }
-
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 

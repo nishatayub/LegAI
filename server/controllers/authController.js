@@ -1,9 +1,6 @@
 const jwt = require('jsonwebtoken');
-const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/User');
 const { successResponse, errorResponse } = require('../utils/responseHelper');
-
-const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Generate JWT Token
 const generateToken = (userId) => {
@@ -35,7 +32,6 @@ exports.register = async (req, res) => {
       name,
       email,
       password,
-      authProvider: 'local',
     });
 
     // Generate token
@@ -50,7 +46,6 @@ exports.register = async (req, res) => {
           email: user.email,
           avatar: user.avatar,
           role: user.role,
-          authProvider: user.authProvider,
         },
         token,
       },
@@ -82,14 +77,6 @@ exports.login = async (req, res) => {
       return errorResponse(res, 'Invalid credentials', 401);
     }
 
-    // Check if user registered with Google
-    if (user.authProvider === 'google') {
-      return errorResponse(
-        res,
-        'This account uses Google sign-in. Please use Google to login',
-        400
-      );
-    }
 
     // Check password
     const isPasswordMatch = await user.comparePassword(password);
@@ -109,7 +96,6 @@ exports.login = async (req, res) => {
           email: user.email,
           avatar: user.avatar,
           role: user.role,
-          authProvider: user.authProvider,
         },
         token,
       },
@@ -121,73 +107,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// @desc    Google OAuth login
-// @route   POST /api/auth/google
-// @access  Public
-exports.googleAuth = async (req, res) => {
-  try {
-    const { credential } = req.body;
-
-    if (!credential) {
-      return errorResponse(res, 'Google credential is required', 400);
-    }
-
-    // Verify Google token
-    const ticket = await googleClient.verifyIdToken({
-      idToken: credential,
-      audience: process.env.GOOGLE_CLIENT_ID,
-    });
-
-    const payload = ticket.getPayload();
-    const { sub: googleId, email, name, picture } = payload;
-
-    // Check if user exists
-    let user = await User.findOne({ email });
-
-    if (user) {
-      // User exists - update Google info if needed
-      if (!user.googleId) {
-        user.googleId = googleId;
-        user.authProvider = 'google';
-        user.avatar = picture || user.avatar;
-        user.isEmailVerified = true;
-        await user.save();
-      }
-    } else {
-      // Create new user
-      user = await User.create({
-        name,
-        email,
-        googleId,
-        avatar: picture,
-        authProvider: 'google',
-        isEmailVerified: true,
-      });
-    }
-
-    // Generate token
-    const token = generateToken(user._id);
-
-    return successResponse(
-      res,
-      {
-        user: {
-          id: user._id,
-          name: user.name,
-          email: user.email,
-          avatar: user.avatar,
-          role: user.role,
-          authProvider: user.authProvider,
-        },
-        token,
-      },
-      'Google authentication successful'
-    );
-  } catch (error) {
-    console.error('Google auth error:', error);
-    return errorResponse(res, 'Google authentication failed', 500);
-  }
-};
 
 // @desc    Get current logged in user
 // @route   GET /api/auth/me
@@ -209,7 +128,6 @@ exports.getMe = async (req, res) => {
           email: user.email,
           avatar: user.avatar,
           role: user.role,
-          authProvider: user.authProvider,
           isEmailVerified: user.isEmailVerified,
           createdAt: user.createdAt,
         },
@@ -263,7 +181,6 @@ exports.updateProfile = async (req, res) => {
           email: user.email,
           avatar: user.avatar,
           role: user.role,
-          authProvider: user.authProvider,
         },
       },
       'Profile updated successfully'

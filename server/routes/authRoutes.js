@@ -2,7 +2,6 @@ const express = require('express');
 const {
   register,
   login,
-  googleAuth,
   getMe,
   logout,
   updateProfile,
@@ -14,7 +13,6 @@ const router = express.Router();
 // Public routes
 router.post('/register', register);
 router.post('/login', login);
-router.post('/google', googleAuth);
 
 // Protected routes (require authentication)
 router.get('/me', protect, getMe);

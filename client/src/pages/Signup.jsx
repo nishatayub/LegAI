@@ -68,13 +68,8 @@ const Signup = () => {
     }
   };
 
-  const handleGoogleSuccess = (data) => {
-    console.log('Google signup successful:', data);
-    navigate('/chat');
-  };
-
   const handleGoogleError = (error) => {
-    setError(error || 'Google authentication failed');
+    setError(error || 'Google authentication is currently unavailable');
   };
 
   return (
@@ -256,7 +251,6 @@ const Signup = () => {
             {/* Social Signup Buttons */}
             <div className="w-full">
               <GoogleLoginButton
-                onSuccess={handleGoogleSuccess}
                 onError={handleGoogleError}
               />
             </div>
