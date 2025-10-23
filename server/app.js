@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 const authRoutes = require('./routes/authRoutes');
+const chatRoutes = require('./routes/chatRoutes');
+const groqRoutes = require('./routes/groqRoutes');
 const { errorResponse } = require('./utils/responseHelper');
 
 const app = express();
@@ -49,6 +51,8 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/chats', chatRoutes);
+app.use('/api/groq', groqRoutes);
 
 // 404 Handler
 app.use((req, res) => {

@@ -4,6 +4,7 @@ import Landing from './pages/Landing';
 import EchoAI from './pages/EchoAI';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/chat',
-    element: <EchoAI/>
+    element: (
+      <ProtectedRoute>
+        <EchoAI/>
+      </ProtectedRoute>
+    )
   },
   {
     path: '/login',
@@ -33,3 +38,4 @@ function App() {
 }
 
 export default App;
+
