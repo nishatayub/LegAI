@@ -22,7 +22,7 @@ const EchoAI = () => {
   const [message, setMessage] = useState('');
   const [editingIdx, setEditingIdx] = useState(null);
   const [editingName, setEditingName] = useState('');
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const currentChat = chats[currentChatIdx];
   const hasMessages = currentChat.messages.length > 0;
@@ -188,14 +188,6 @@ const EchoAI = () => {
             </div>
           </div>
         </aside>
-      )}
-      {!sidebarOpen && (
-        <button className="fixed top-5 left-5 z-50 bg-[#5C2E2E] text-white p-2 rounded-lg shadow-lg hover:bg-[#7D4545] transition-all duration-200" onClick={() => setSidebarOpen(true)} aria-label="Open sidebar">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="4" y="7" width="16" height="2" rx="1" fill="currentColor" />
-            <rect x="4" y="15" width="16" height="2" rx="1" fill="currentColor" />
-          </svg>
-        </button>
       )}
       <main className="flex-1 flex flex-col h-screen overflow-hidden bg-[#F5F3F0]">
         <header className="flex justify-between items-center px-8 py-5 bg-[#F5F3F0] border-b border-[#EAE4DC] flex-shrink-0">
