@@ -17,6 +17,8 @@ LegAI is a web application that helps users understand and interact with legal d
 ## 🛠️ Tech Stack
 
 - **Frontend:** Vite + React (JavaScript)
+- **Backend:** NodeJs + ExpressJs
+- **Database:** MongoDB
 - **AI Integration:** API-based (Gemini API)
 - **Text Parsing:** Client-side extraction
 
@@ -94,4 +96,3 @@ LegAI is a web application that helps users understand and interact with legal d
 - Enhanced legal interpretation
 
 ---
-
