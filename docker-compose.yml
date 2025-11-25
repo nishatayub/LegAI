@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: legai-server
+    environment:
+      PORT: ${PORT:-8080}
+      NODE_ENV: ${NODE_ENV:-development}
+      MONGODB_URI: ${MONGODB_URI}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRE: ${JWT_EXPIRE:-7d}
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:5173}
+      GROQ_API_KEY: ${GROQ_API_KEY}
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    networks:
+      - legai-network
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8080/api
+    container_name: legai-client
+    environment:
+      VITE_API_URL: http://localhost:8080/api
+    depends_on:
+      - server
+    ports:
+      - "5173:5173"
+    networks:
+      - legai-network
+    restart: unless-stopped
+
+networks:
+  legai-network:
+    driver: bridge
